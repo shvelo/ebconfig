@@ -25,7 +25,7 @@ ln -s /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/npm /us
 fi
 
 if [ ! -f "/opt/elasticbeanstalk/node-install/npm_updated" ]; then
-/opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/ && /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/npm update npm@3.4.0 -g
+/opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/ && /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/npm update npm@2.14.13 -g
 touch /opt/elasticbeanstalk/node-install/npm_updated
 echo "YAY! Updated global NPM version to `npm -v`"
 else

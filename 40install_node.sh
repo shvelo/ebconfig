@@ -9,7 +9,7 @@ function error_exit
 }
 
 #UNCOMMENT to update npm, otherwise will be updated on instance init or rebuild
-#rm -f /opt/elasticbeanstalk/node-install/npm_updated
+rm -f /opt/elasticbeanstalk/node-install/npm_updated
 
 #download and extract desired node.js version
 OUT=$( [ ! -d "/opt/elasticbeanstalk/node-install" ] && mkdir /opt/elasticbeanstalk/node-install ; cd /opt/elasticbeanstalk/node-install/ && wget -nc http://nodejs.org/dist/v$NODE_VER/node-v$NODE_VER-linux-$ARCH.tar.gz && tar --skip-old-files -xzpf node-v$NODE_VER-linux-$ARCH.tar.gz) || error_exit "Failed to UPDATE node version. $OUT" $?.
@@ -25,7 +25,7 @@ ln -s /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/npm /us
 fi
 
 if [ ! -f "/opt/elasticbeanstalk/node-install/npm_updated" ]; then
-/opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/ && /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/npm update npm@2.14.13 -g
+cd /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/ && /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/npm update npm@2.14.13 -g
 touch /opt/elasticbeanstalk/node-install/npm_updated
 echo "YAY! Updated global NPM version to `npm -v`"
 else

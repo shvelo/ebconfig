@@ -31,9 +31,15 @@ if [ ! -f "/opt/elasticbeanstalk/node-install/npm_updated" ]; then
  /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/npm update npm@$NPM_VER -g
  touch /opt/elasticbeanstalk/node-install/npm_updated
  echo "YAY! Updated global NPM version to `npm -v`"
- echo "Try to install bower globally "
- sudo npm install bower -g
- echo "Bower installed version `/opt/elasticbeanstalk/node-install/node-v4.2.2-linux-x64/bin/bower -v`"
 else
   echo "Skipping NPM -g version update. To update, please uncomment 40install_node.sh:12"
+fi
+
+
+if [ ! -L /usr/bin/bower ]; then
+ echo "Try to install bower globally "
+ sudo npm install bower -g
+ echo "Make link to use bower globally "
+ ln -s /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/bower /usr/bin/bower
+ echo "Bower installed version `bower -v`"
 fi

@@ -16,6 +16,12 @@ OUT=$( [ ! -d "/opt/elasticbeanstalk/node-install" ] && mkdir /opt/elasticbeanst
 echo $OUT
 
 #make sure node binaries can be found globally
+unlink /usr/bin/node
+unlink /usr/bin/npm
+
+rm -f /usr/bin/node
+rm -f /usr/bin/npm
+
 if [ ! -L /usr/bin/node ]; then
   ln -s /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/node /usr/bin/node
 fi

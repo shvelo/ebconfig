@@ -55,5 +55,5 @@ if [ ! -L /usr/bin/yarn ]; then
  sudo npm install yarn -g
  echo "Make link to use yarn globally "
  ln -s /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/yarn /usr/bin/yarn
- echo "Bower installed version `yarn --version`"
+ echo "Yarn installed version `yarn --version`"
 fi

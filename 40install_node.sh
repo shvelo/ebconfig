@@ -49,3 +49,9 @@ if [ ! -L /usr/bin/bower ]; then
  ln -s /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/bower /usr/bin/bower
  echo "Bower installed version `bower -v`"
 fi
+
+if [ ! -L /usr/bin/yarn ]; then
+ echo "Try to install yarn globally "
+ sudo npm install yarn -g
+ ln -s /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/yarn /usr/bin/yarn
+fi

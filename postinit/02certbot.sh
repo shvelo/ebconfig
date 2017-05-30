@@ -1,6 +1,6 @@
 #!/bin/bash
 #source env variables including node version
-. /opt/elasticbeanstalk/env.vars
+. /opt/elasticbeanstalk/instance.vars
 
 function error_exit
 {
@@ -15,6 +15,6 @@ ln -sf /opt/certbot/certbot-auto /usr/bin/certbot-auto
 mkdir -p /var/well-known
 
 if [ ! -d "/etc/letsencrypt" ]; then
-    /opt/certbot/certbot-auto -n --no-bootstrap register --agree-tos -m nick.shvelidze@in2circle.com
-    /opt/certbot/certbot-auto -n --no-bootstrap certonly --webroot --webroot-path=/var/well-known -d tst.sadili.ge,sadili-env-tst.elasticbeanstalk.com,www.tst.sadili.ge
+    /opt/certbot/certbot-auto -n --no-bootstrap register --agree-tos -m $CERTBOT_EMAIL
+    /opt/certbot/certbot-auto -n --no-bootstrap certonly --webroot --webroot-path=/var/well-known -d $CERTBOT_DOMAINS
 fi

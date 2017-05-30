@@ -41,11 +41,10 @@ else
   echo "Skipping NPM -g version update. To update, please uncomment 40install_node.sh:12"
 fi
 
-
 if [ ! -L /usr/bin/bower ]; then
- echo "Try to install bower globally "
+ echo "Try to install bower globally"
  sudo npm install bower -g
- echo "Make link to use bower globally "
+ echo "Make link to use bower globally"
  ln -s /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/bower /usr/bin/bower
  echo "Bower installed version `bower -v`"
 fi

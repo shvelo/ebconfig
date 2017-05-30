@@ -16,6 +16,6 @@ function error_exit
 #  ln -s /var/node_modules /tmp/deployment/application/
 #fi
 
-echo "run npm install"
-OUT=$([ -d "/tmp/deployment/application" ] && cd /tmp/deployment/application && /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/npm install 2>&1) || error_exit "Failed to run npm install.  $OUT" $?
+echo "run yarn install"
+OUT=$([ -d "/tmp/deployment/application" ] && cd /tmp/deployment/application && /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/yarn install 2>&1) || error_exit "Failed to run yarn install.  $OUT" $?
 echo $OUT

@@ -8,8 +8,13 @@ function error_exit
   exit $2
 }
 
-git clone https://github.com/certbot/certbot.git /opt/certbot
-ln -s /opt/certbot/certbot-auto /usr/bin/certbot-auto
+if [ ! -d " /opt/certbot" ]; then
+    git clone https://github.com/certbot/certbot.git /opt/certbot
+fi
+ln -sf /opt/certbot/certbot-auto /usr/bin/certbot-auto
+mkdir -p /var/well-known
 
-/opt/certbot/certbot-auto -n --no-bootstrap register --agree-tos -m nick.shvelidze@in2circle.com
-/opt/certbot/certbot-auto -n --no-bootstrap certonly --webroot --webroot-path=/var/well-known -d tst.sadili.ge,sadili-env-tst.elasticbeanstalk.com,www.tst.sadili.ge
+if [ ! -d "/etc/letsencrypt" ]; then
+    /opt/certbot/certbot-auto -n --no-bootstrap register --agree-tos -m nick.shvelidze@in2circle.com
+    /opt/certbot/certbot-auto -n --no-bootstrap certonly --webroot --webroot-path=/var/well-known -d tst.sadili.ge,sadili-env-tst.elasticbeanstalk.com,www.tst.sadili.ge
+fi

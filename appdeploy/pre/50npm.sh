@@ -17,5 +17,5 @@ function error_exit
 #fi
 
 echo "run yarn install"
-OUT=$([ -d "/tmp/deployment/application" ] && cd /tmp/deployment/application && /opt/elasticbeanstalk/node-install/node-v$NODE_VER-linux-$ARCH/bin/yarn install 2>&1) || error_exit "Failed to run yarn install.  $OUT" $?
+OUT=$([ -d "/tmp/deployment/application" ] && cd /tmp/deployment/application && /usr/bin/yarn install 2>&1) || error_exit "Failed to run yarn install.  $OUT" $?
 echo $OUT
